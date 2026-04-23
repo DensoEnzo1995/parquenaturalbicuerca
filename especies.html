@@ -8,30 +8,45 @@
   <link rel="stylesheet" href="estilos.css" />
   <body>
     <header>
-        <div class="logo-text">
-            <h1>Parque Natural <span>Sierra Bicuerca</span></h1>
-        </div>
+      <div class="header-image"></div>
+      <div class="header-title">
+        <h1>Parque Natural <span>Sierra Bicuerca</span></h1>
+      </div>
     </header>
 
     <div class="main-container">
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#" class="active">Especies</a></li>
-                <li><a href="#">Reservas</a></li>
-                <li><a href="#">Galería</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="especies.html" class="active">Especies</a></li>
+                <li><a href="reservas.html">Reservas</a></li>
+                <li><a href="galería.html">Galería</a></li>
             </ul>
         </nav>
 
         <article>
             <h2>Especies del Parque</h2>
             <p>Estos son algunos de los habitantes de parque:</p>
-            <h3>Nutria</h3>
-            <p>La nutria europea o paleártica (Lutra lutra) es un mamífero carnívoro de hábitat acuático. Se alimenta de peces, ranas y pequeñas presas que caza en el río. Cerca de sus lugares de cobijo, podremos ver toboganes que crean para llegar rápidamente al agua.</p>
-            <h3>Buitre leonado</h3>
-            <p>El buitre leonado (Gyps fulvus) es un ave rapaz, una de las mayores que puede encontrarse en la Península Ibérica. Su alimentación principal es la carroña, que localiza con su aguda vista.</p>
-            <h3>Gineta</h3>
-            <p>La gineta (Genetta genetta) es una especie de mamífero carnívoro. Son grandes trepadoras, muy ágiles y grandes cazadoreas de pequeños animales. Aunque tambien se alimentan de los frutos del bosque que se peden encontrar en el parque.</p>
+            
+            <input type="radio" id="nutria-radio" name="species" checked hidden>
+            <input type="radio" id="buitre-radio" name="species" hidden>
+            <input type="radio" id="gineta-radio" name="species" hidden>
+            
+            <div class="species-container">
+                <div class="species-images">
+                    <img id="img-nutria" src="nutria.jpg" alt="Nutria" class="species-image">
+                    <img id="img-buitre" src="buitre_leonado.jpg" alt="Buitre leonado" class="species-image">
+                    <img id="img-gineta" src="gineta.jpg" alt="Gineta" class="species-image">
+                </div>
+                <div class="species-list">
+                    <label for="nutria-radio"><h3>Nutria</h3></label>
+                    <p>La nutria europea o paleártica (Lutra lutra) es un mamífero carnívoro de hábitat acuático. Se alimenta de peces, ranas y pequeñas presas que caza en el río. Cerca de sus lugares de cobijo, podremos ver toboganes que crean para llegar rápidamente al agua.</p>
+                    <label for="buitre-radio"><h3>Buitre leonado</h3></label>
+                    <p>El buitre leonado (Gyps fulvus) es un ave rapaz, una de las mayores que puede encontrarse en la Península Ibérica. Su alimentación principal es la carroña, que localiza con su aguda vista.</p>
+                    <label for="gineta-radio"><h3>Gineta</h3></label>
+                    <p>La gineta (Genetta genetta) es una especie de mamífero carnívoro. Son grandes trepadoras, muy ágiles y grandes cazadoreas de pequeños animales. Aunque tambien se alimentan de los frutos del bosque que se peden encontrar en el parque.</p>
+                </div>
+            </div>
         </article>
     </div>
 </body>
