@@ -1,10 +1,95 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Reservas - Parque Natural Sierra Bicuerca</title>
+    <link rel="stylesheet" href="estilos.css" />
   </head>
-  <link rel="stylesheet" href="estilos.css" />
-  <body></body>
+  <body>
+    <header>
+      <div class="header-image"></div>
+      <div class="header-title">
+        <h1>Parque Natural <span>Sierra Bicuerca</span></h1>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="especies.html">Especies</a></li>
+          <li><a href="reservas.html" class="active">Reservas</a></li>
+          <li><a href="galería.html">Galería</a></li>
+        </ul>
+      </nav>
+
+      <article>
+        <h2>Reservas</h2>
+
+        <p>
+          El acceso al parque es libre y gratuito, siempre que se respeten las
+          normas de conducta y preservación del entorno.
+        </p>
+
+        <p>
+          No obstante, también disponemos de servicios adicionales, como visita
+          guiada o aula educativa para niños.
+        </p>
+
+        <section class="section-box">
+          <h3>Horarios y reservas</h3>
+
+          <table class="reserve-table">
+            <thead>
+              <tr>
+                <th colspan="3">Visitas con guías:</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>Temporada de verano</th>
+                <th>Temporada de invierno</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="label">Horarios</td>
+                <td>10:00 – 13:00<br />16:00 – 19:00</td>
+                <td>11:00 – 14:00</td>
+              </tr>
+              <tr>
+                <td class="label">Tarifas</td>
+                <td>Individual: 85 pesos<br />Grupos: 51 pesos</td>
+                <td>Individual: 18 pesos<br />Grupos: 34 pesos</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="reserve-table reserve-table--secondary">
+            <thead>
+              <tr>
+                <th colspan="3">Aula educativa (sólo grupos):</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>Temporada de Verano</th>
+                <th>Temporada de Invierno</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="label">Horarios</td>
+                <td>9:00 – 10:00<br />15:00 – 16:00</td>
+                <td>10:00 – 11:00</td>
+              </tr>
+              <tr>
+                <td class="label">Tarifas</td>
+                <td colspan="2">425 pesos</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </article>
+    </div>
+  </body>
 </html>
