@@ -6,6 +6,7 @@
 }
 
 body {
+  display: flex
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.8;
   color: #323232;
@@ -21,7 +22,12 @@ header {
   gap: 1rem;
   padding: 30px 0 0;
 }
-
+footer.index_footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
 .header-image {
   width: min(100%, 1120px);
   height: 240px;
@@ -96,7 +102,7 @@ nav ul li a.active {
 
 /* Contenido */
 article {
-  flex: 1;
+  display: grid;
   background: #ffffff;
   padding: 34px;
   border-radius: 12px;
@@ -113,6 +119,7 @@ h2 {
 }
 
 p {
+  display: block;
   margin-top: 24px;
     padding: 18px 20px;
     background: #f8f8f5bd;
