@@ -105,17 +105,20 @@ article {
 }
 
 h2 {
-  color: #5a7f20;
+  color: #3e6008;
   border-bottom: 2px solid #a4c075;
   padding-bottom: 10px;
   margin-bottom: 22px;
-  font-size: 2rem;
+  box-shadow: inset 0 -2px 0 rgba(164, 192, 117, 0.5);
 }
 
 p {
-  margin-bottom: 18px;
-  text-align: justify;
-  color: #333;
+  margin-top: 24px;
+    padding: 18px 20px;
+    background: #f8f8f5bd;
+    border: 1px solid #e6e3dd;
+    border-radius: 12px;
+    color: #3a3a34;
 }
 
 .section-box {
@@ -135,35 +138,38 @@ p {
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: repeat(2, auto);
-  gap: 18px;
-  margin-top: 24px;
+  display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 5px;
+}
+
+.gallery-grid-2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 5px;
 }
 
 .gallery-grid img {
-  width: 100%;
-  height: 100%;
-  min-height: 220px;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
+
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-.gallery-grid img:nth-child(3) {
-  min-height: 260px;
-}
-
-.gallery-grid img:nth-child(4) {
-  min-height: 260px;
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .gallery-footer {
   margin-top: 24px;
   padding: 18px 20px;
-  background: #f8f8f5;
+  background: #f8f8f5bd;
   border: 1px solid #e6e3dd;
   border-radius: 12px;
   color: #3a3a34;
