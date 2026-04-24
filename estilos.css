@@ -30,13 +30,7 @@ header {
 .header-image {
   width: min(100%, 1120px);
   height: 240px;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-}
-.header-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: url('picture.png') center/cover no-repeat;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
@@ -254,9 +248,17 @@ p {
 
 .species-list {
   flex: 1;
+  order: 2;
 }
 
-.species-list label {
+.species-images {
+  flex: 0 0 300px;
+  position: relative;
+  height: 400px;
+  order: 1;
+}
+
+.species-trigger {
   cursor: pointer;
 }
 
