@@ -248,17 +248,9 @@ p {
 
 .species-list {
   flex: 1;
-  order: 2;
 }
 
-.species-images {
-  flex: 0 0 300px;
-  position: relative;
-  height: 400px;
-  order: 1;
-}
-
-.species-trigger {
+.species-list label {
   cursor: pointer;
 }
 
