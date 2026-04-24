@@ -6,8 +6,8 @@
 }
 
 body {
-  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif
-  line-height: 1.4;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  line-height: 1.8;
   font-size: 14px;
   color: #000;
   background-color: #eef1e8;
@@ -30,8 +30,9 @@ header {
   color: #555;
 }
 .header-image {
-  width: min(100%, 1120px);
+  width: min(90%, 1120px);
   height: 240px;
+  background: url('picture.png') center/cover no-repeat;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
@@ -111,7 +112,7 @@ article {
 }
 
 h2 {
-  color: #3e6008;
+  color: #70AF0A;
   border-bottom: 2px solid #a4c075;
   padding-bottom: 10px;
   margin-bottom: 22px;
