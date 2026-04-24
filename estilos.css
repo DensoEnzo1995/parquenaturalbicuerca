@@ -14,7 +14,7 @@ body {
   text-align: justify;
 }
 
-/* Cabecera con Imagen */
+
 header {
   width: 100%;
   display: flex;
@@ -101,8 +101,7 @@ nav ul li a.active {
   color: #2c4a18;
   transform: translateX(2px);
 }
-
-/* Contenido */
+  
 article {
   display: grid;
   background: #ffffff;
@@ -169,12 +168,6 @@ p {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .gallery-footer {
   margin-top: 24px;
   padding: 18px 20px;
@@ -218,7 +211,6 @@ p {
   background: #f8f0d2;
 }
 
-/* Estilos para especies con imagen flotante */
 .species-container {
   display: flex;
   gap: 20px;
