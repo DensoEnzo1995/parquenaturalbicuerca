@@ -22,7 +22,8 @@ header {
   align-items: center;
   gap: 1rem;
   padding: 30px 0 0;
-}       
+}  
+footer {      
   justify-content: flex-end;
   text-align: center;
   padding: 20px;
@@ -266,19 +267,4 @@ p {
 .species-list p {
   margin-bottom: 15px;
   text-align: justify;
-}
-
-/* Responsivo para móviles */
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-  }
-
-  header {
-    height: 200px;
-  }
-
-  h1 {
-    font-size: 1.4rem;
-  }
 }
