@@ -30,7 +30,7 @@ header {
   color: #555;
 }
 .header-image {
-  width: min(90%, 1120px);
+  width: min(100%, 1120px);
   height: 240px;
   background: url('picture.png') center/cover no-repeat;
   border-radius: 12px;
