@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Especies</title>
     <link rel="stylesheet" href="estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <header>
       <div class="header-image"></div>
       <div class="header-title">
@@ -29,26 +31,137 @@
 
         <article>
             <h2>Especies del Parque</h2>
-            <p>Estos son algunos de los habitantes de parque:</p>
+            <p>Estos son algunos de los habitantes del parque:</p>
             
-            <input type="radio" id="nutria-radio" name="species" checked hidden>
-            <input type="radio" id="buitre-radio" name="species" hidden>
-            <input type="radio" id="gineta-radio" name="species" hidden>
-            
-            <div class="species-container">
-                <div class="species-images">
-                    <img id="img-nutria" src="nutria.jpg" alt="Nutria" class="species-image">
-                    <img id="img-buitre" src="buitre_leonado.jpg" alt="Buitre leonado" class="species-image">
-                    <img id="img-gineta" src="gineta.jpg" alt="Gineta" class="species-image">
+            <div id="especiesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
-                <div class="species-list">
-                    <h3><label for="nutria-radio">Nutria</label></h3>
-                    <p>La nutria europea o paleártica (Lutra lutra) es un mamífero carnívoro de hábitat acuático. Se alimenta de peces, ranas y pequeñas presas que caza en el río. Cerca de sus lugares de cobijo, podremos ver toboganes que crean para llegar rápidamente al agua.</p>
-                    <h3><label for="buitre-radio">Buitre leonado</label></h3>
-                    <p>El buitre leonado (Gyps fulvus) es un ave rapaz, una de las mayores que puede encontrarse en la Península Ibérica. Su alimentación principal es la carroña, que localiza con su aguda vista.</p>
-                    <h3><label for="gineta-radio">Gineta</label></h3>
-                    <p>La gineta (Genetta genetta) es una especie de mamífero carnívoro. Son grandes trepadoras, muy ágiles y grandes cazadoreas de pequeños animales. Aunque tambien se alimentan de los frutos del bosque que se peden encontrar en el parque.</p>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Tarjeta Nutria -->
+                                <div class="card species-card">
+                                    <img src="img/nutria.jpg" class="card-img-top" alt="Nutria">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nutria</h5>
+                                        <p class="card-text">La nutria europea o paleártica (Lutra lutra) es un mamífero carnívoro de hábitat acuático. Se alimenta de peces, ranas y pequeñas presas que caza en el río. Cerca de sus lugares de cobijo, podremos ver toboganes que crean para llegar rápidamente al agua.</p>
+                                        <span class="badge bg-success">Mamífero</span>
+                                        <span class="badge bg-info">Acuático</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Tarjeta Buitre Leonado -->
+                                <div class="card species-card">
+                                    <img src="img/buitre_leonado.jpg" class="card-img-top" alt="Buitre leonado">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Buitre leonado</h5>
+                                        <p class="card-text">El buitre leonado (Gyps fulvus) es un ave rapaz, una de las mayores que puede encontrarse en la Península Ibérica. Su alimentación principal es la carroña, que localiza con su aguda vista.</p>
+                                        <span class="badge bg-warning">Ave</span>
+                                        <span class="badge bg-danger">Rapaz</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Tarjeta Ciervo -->
+                                <div class="card species-card">
+                                    <img src="img/ciervo-rojo.jpg" class="card-img-top" alt="Ciervo">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ciervo</h5>
+                                        <p class="card-text">El ciervo es uno de los herbívoros más tranquilos del parque. Se le puede ver al amanecer cerca de los claros, masticando hierba y echando un vistazo a su entorno antes de seguir caminando.</p>
+                                        <span class="badge bg-success">Mamífero</span>
+                                        <span class="badge bg-secondary">Herbívoro</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Tarjeta Zorro -->
+                                <div class="card species-card">
+                                    <img src="img/zorro.jpg" class="card-img-top" alt="Zorro">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Zorro</h5>
+                                        <p class="card-text">El zorro rojo se mueve entre arbustos al atardecer buscando pequeños mamíferos y bayas. Es astuto y silencioso, y suele dejar rastro por las zonas menos transitadas del bosque.</p>
+                                        <span class="badge bg-success">Mamífero</span>
+                                        <span class="badge bg-dark">Carnívoro</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Tarjeta Topillo -->
+                                <div class="card species-card">
+                                    <img src="img/Topillo.jpg" class="card-img-top" alt="Topillo">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Topillo</h5>
+                                        <p class="card-text">El topillo habita en las zonas más húmedas y verdes, cerca de los arroyos. Aunque es pequeño, su presencia es importante en el ecosistema porque sirve de alimento para aves rapaces y zorros.</p>
+                                        <span class="badge bg-success">Mamífero</span>
+                                        <span class="badge bg-info">Pequeño roedor</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Tarjeta Martín pescador -->
+                                <div class="card species-card">
+                                    <img src="img/martín_pescador.jpg" class="card-img-top" alt="Martín pescador">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Martín pescador</h5>
+                                        <p class="card-text">El martín pescador es un pájaro de colores muy vivos, que se posa sobre ramas junto al agua para lanzar un picado y atrapar peces pequeños con su pico afilado.</p>
+                                        <span class="badge bg-warning">Ave</span>
+                                        <span class="badge bg-info">Acuático</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Tarjeta Jabalí -->
+                                <div class="card species-card">
+                                    <img src="img/jabalí.webp" class="card-img-top" alt="Jabalí">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jabalí</h5>
+                                        <p class="card-text">El jabalí aparece a veces en las zonas densas del monte. Es fuerte y de costumbres nocturnas, y con su hocico remueve el suelo en busca de raíces, insectos y bellotas.</p>
+                                        <span class="badge bg-success">Mamífero</span>
+                                        <span class="badge bg-secondary">Nocturno</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Tarjeta Libélula -->
+                                <div class="card species-card">
+                                    <img src="img/libelula.webp" class="card-img-top" alt="Libélula">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Libélula</h5>
+                                        <p class="card-text">La libélula es uno de los insectos más vistosos del humedal. Vuela rápidamente sobre el agua, cazando pequeños insectos y siempre volviendo a posarse junto a las juncias.</p>
+                                        <span class="badge bg-danger">Insecto</span>
+                                        <span class="badge bg-info">Acuático</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#especiesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#especiesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </article>
     </div>

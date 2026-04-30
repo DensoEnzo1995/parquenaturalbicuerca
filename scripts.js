@@ -34,3 +34,39 @@ function mostrarFraseEnAlert(event) {
     
     alert(frase);
 }
+
+function buscarEnPagina() {
+    const busqueda = document.getElementById('search-input').value.trim().toLowerCase();
+    const resultado = document.getElementById('search-result');
+    const textoArticulo = document.querySelector('article').innerText.toLowerCase();
+
+    if (!busqueda) {
+        resultado.textContent = 'Escribe algo para buscarlo...';
+        return;
+    }
+
+    if (textoArticulo.indexOf(busqueda) !== -1) {
+        resultado.textContent = '¡Bingo! Ya aparece en el artículo.';
+    } else {
+        resultado.textContent = 'No lo encuentro en la página. Prueba otra palabra.';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const botonBuscar = document.getElementById('search-button');
+    const inputBuscar = document.getElementById('search-input');
+
+    if (botonBuscar) {
+        botonBuscar.addEventListener('click', buscarEnPagina);
+    }
+
+    if (inputBuscar) {
+        inputBuscar.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                buscarEnPagina();
+            }
+        });
+    }
+    
+});
