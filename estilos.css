@@ -5,6 +5,38 @@
   box-sizing: border-box;
 }
 
+.card.species-card {
+  background: #ffffff;
+  border: 1px solid #dee3d6;
+  border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos para el carrusel de especies */
+.carousel {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-item {
+  padding: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-indicators button {
+  background-color: #a4c075;
+  border: none;
+}
+
+.carousel-indicators .active {
+  background-color: #4f8520;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.8;
@@ -28,7 +60,7 @@ header {
 .header-image {
   width: min(100%, 1120px);
   height: 240px;
-  background: url('picture.png');
+  background: url('img/picture.png');
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
@@ -96,7 +128,7 @@ nav ul li a.active {
   color: #2c4a18;
   transform: translateX(2px);
 }
-  
+
 article {
   display: grid;
   background: #ffffff;
@@ -209,8 +241,8 @@ p {
 
 .species-container {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  gap: 15px;
+  align-items: flex-start
 }
 
 .species-images {
@@ -233,7 +265,13 @@ p {
 
 #nutria-radio:checked ~ .species-container .species-images #img-nutria,
 #buitre-radio:checked ~ .species-container .species-images #img-buitre,
-#gineta-radio:checked ~ .species-container .species-images #img-gineta {
+#gineta-radio:checked ~ .species-container .species-images #img-gineta,
+#ciervo-radio:checked ~ .species-container .species-images #img-ciervo,
+#zorro-radio:checked ~ .species-container .species-images #img-zorro,
+#topillo-radio:checked ~ .species-container .species-images #img-topillo,
+#martin-radio:checked ~ .species-container .species-images #img-martin,
+#jabali-radio:checked ~ .species-container .species-images #img-jabali,
+#libelula-radio:checked ~ .species-container .species-images #img-libelula {
   display: block;
 }
 
