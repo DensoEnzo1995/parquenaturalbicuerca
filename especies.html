@@ -1,169 +1,256 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Especies</title>
-    <link rel="stylesheet" href="estilos.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <header>
-      <div class="header-image"></div>
-      <div class="header-title">
-        <h1>Parque Natural <span>Sierra Bicuerca</span></h1>
-      </div>
-    </header>
+    <title>Especies - Sierra Bicuerca</title>
+    <!-- Google Fonts para el estilo espectacular -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS de Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #1a5d1a;
+            --accent-gold: #f4ce14;
+            --nature-dark: #3c4048;
+        }
 
-    <body onload="MM_preloadImages('nutria.jpg','buitre_leonado.jpg','gineta.jpg')"><!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KX380T5BD"></script>
+        body { 
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            font-family: 'Open Sans', sans-serif;
+            min-height: 100vh;
+        }
 
-    <div class="main-container">
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="especies.html" class="active">Especies</a></li>
-                <li><a href="reservas.html">Reservas</a></li>
-                <li><a href="galería.html">Galería</a></li>
+        /* Estilos del Navbar */
+        .navbar {
+            background-color: var(--primary-green) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .nav-link:hover {
+            color: var(--accent-gold) !important;
+        }
+
+        /* Estilos del Carrusel Espectacular */
+        #especiesCarousel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 20px;
+        }
+
+        .species-card { 
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            background: white;
+        }
+
+        .species-card:hover { 
+            transform: translateY(-12px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
+        }
+
+        .species-card img { 
+            width: 100%;
+            height: 280px; 
+            object-fit: cover; 
+            transition: transform 0.5s;
+        }
+
+        .species-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-item { padding: 20px; }
+
+        /* Iconos de control mejorados */
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background-size: 50%;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR CLONADO -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Sierra Bicuerca</a>
+        <button class="navbar-toggler border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link active" href="especies.html">Especies</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Rutas</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
             </ul>
-        </nav>
-
-        <article>
-            <h2>Especies del Parque</h2>
-            <p>Estos son algunos de los habitantes del parque:</p>
-            
-            <div id="especiesCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Tarjeta Nutria -->
-                                <div class="card species-card">
-                                    <img src="img/nutria.jpg" class="card-img-top" alt="Nutria">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Nutria</h5>
-                                        <p class="card-text">La nutria europea o paleártica (Lutra lutra) es un mamífero carnívoro de hábitat acuático. Se alimenta de peces, ranas y pequeñas presas que caza en el río. Cerca de sus lugares de cobijo, podremos ver toboganes que crean para llegar rápidamente al agua.</p>
-                                        <span class="badge bg-success">Mamífero</span>
-                                        <span class="badge bg-info">Acuático</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Tarjeta Buitre Leonado -->
-                                <div class="card species-card">
-                                    <img src="img/buitre_leonado.jpg" class="card-img-top" alt="Buitre leonado">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Buitre leonado</h5>
-                                        <p class="card-text">El buitre leonado (Gyps fulvus) es un ave rapaz, una de las mayores que puede encontrarse en la Península Ibérica. Su alimentación principal es la carroña, que localiza con su aguda vista.</p>
-                                        <span class="badge bg-warning">Ave</span>
-                                        <span class="badge bg-danger">Rapaz</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Tarjeta Ciervo -->
-                                <div class="card species-card">
-                                    <img src="img/ciervo-rojo.jpg" class="card-img-top" alt="Ciervo">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Ciervo</h5>
-                                        <p class="card-text">El ciervo es uno de los herbívoros más tranquilos del parque. Se le puede ver al amanecer cerca de los claros, masticando hierba y echando un vistazo a su entorno antes de seguir caminando.</p>
-                                        <span class="badge bg-success">Mamífero</span>
-                                        <span class="badge bg-secondary">Herbívoro</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Tarjeta Zorro -->
-                                <div class="card species-card">
-                                    <img src="img/zorro.jpg" class="card-img-top" alt="Zorro">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Zorro</h5>
-                                        <p class="card-text">El zorro rojo se mueve entre arbustos al atardecer buscando pequeños mamíferos y bayas. Es astuto y silencioso, y suele dejar rastro por las zonas menos transitadas del bosque.</p>
-                                        <span class="badge bg-success">Mamífero</span>
-                                        <span class="badge bg-dark">Carnívoro</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Tarjeta Topillo -->
-                                <div class="card species-card">
-                                    <img src="img/Topillo.jpg" class="card-img-top" alt="Topillo">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Topillo</h5>
-                                        <p class="card-text">El topillo habita en las zonas más húmedas y verdes, cerca de los arroyos. Aunque es pequeño, su presencia es importante en el ecosistema porque sirve de alimento para aves rapaces y zorros.</p>
-                                        <span class="badge bg-success">Mamífero</span>
-                                        <span class="badge bg-info">Pequeño roedor</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Tarjeta Martín pescador -->
-                                <div class="card species-card">
-                                    <img src="img/martín_pescador.jpg" class="card-img-top" alt="Martín pescador">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Martín pescador</h5>
-                                        <p class="card-text">El martín pescador es un pájaro de colores muy vivos, que se posa sobre ramas junto al agua para lanzar un picado y atrapar peces pequeños con su pico afilado.</p>
-                                        <span class="badge bg-warning">Ave</span>
-                                        <span class="badge bg-info">Acuático</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Tarjeta Jabalí -->
-                                <div class="card species-card">
-                                    <img src="img/jabalí.webp" class="card-img-top" alt="Jabalí">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Jabalí</h5>
-                                        <p class="card-text">El jabalí aparece a veces en las zonas densas del monte. Es fuerte y de costumbres nocturnas, y con su hocico remueve el suelo en busca de raíces, insectos y bellotas.</p>
-                                        <span class="badge bg-success">Mamífero</span>
-                                        <span class="badge bg-secondary">Nocturno</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Tarjeta Libélula -->
-                                <div class="card species-card">
-                                    <img src="img/libelula.webp" class="card-img-top" alt="Libélula">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Libélula</h5>
-                                        <p class="card-text">La libélula es uno de los insectos más vistosos del humedal. Vuela rápidamente sobre el agua, cazando pequeños insectos y siempre volviendo a posarse junto a las juncias.</p>
-                                        <span class="badge bg-danger">Insecto</span>
-                                        <span class="badge bg-info">Acuático</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#especiesCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#especiesCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </article>
+        </div>
     </div>
+</nav>
+
+<div class="container mt-5 pt-3">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold text-success" style="font-family: 'Montserrat';">Biodiversidad</h2>
+        <p class="text-muted lead">Explora las maravillas que habitan en nuestro Parque Natural</p>
+        <hr class="mx-auto" style="width: 80px; border: 3px solid var(--primary-green); opacity: 1;">
+    </div>
+
+    <div id="especiesCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+        
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="0" class="active" style="background-color: var(--primary-green);"></button>
+            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="1" style="background-color: var(--primary-green);"></button>
+            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="2" style="background-color: var(--primary-green);"></button>
+            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="3" style="background-color: var(--primary-green);"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <!-- GRUPO 1: Nutria y Buitre -->
+            <div class="carousel-item active">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
+                            <img src="img/especies_img/nutria.jpg" alt="Nutria">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Nutria</h5>
+                                <p class="card-text text-muted">Mamífero acuático que caza peces en el río.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-warning text-dark">AVE</span>
+                            <img src="img/especies_img/buitre_leonado.jpg" alt="Buitre">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Buitre leonado</h5>
+                                <p class="card-text text-muted">Ave rapaz carroñera de gran envergadura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRUPO 2: Ciervo y Zorro -->
+            <div class="carousel-item">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
+                            <img src="img/especies_img/ciervo-rojo.jpg" alt="Ciervo">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Ciervo</h5>
+                                <p class="card-text text-muted">Herbívoro tranquilo que pasta al amanecer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
+                            <img src="img/especies_img/zorro.jpg" alt="Zorro">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Zorro</h5>
+                                <p class="card-text text-muted">Astuto cazador nocturno de los bosques.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRUPO 3: Topillo y Martín Pescador -->
+            <div class="carousel-item">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-info text-dark">ROEDOR</span>
+                            <img src="img/especies_img/Topillo.jpg" alt="Topillo">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Topillo</h5>
+                                <p class="card-text text-muted">Pequeño roedor clave para el ecosistema.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-warning text-dark">AVE</span>
+                            <img src="img/especies_img/martín_pescador.jpg" alt="Martín Pescador">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Martín pescador</h5>
+                                <p class="card-text text-muted">Ave de colores vivos que pesca en picado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRUPO 4: Jabalí y Libélula -->
+            <div class="carousel-item">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
+                            <img src="img/especies_img/jabalí.webp" alt="Jabalí">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Jabalí</h5>
+                                <p class="card-text text-muted">Fuerte y nocturno, busca raíces y bellotas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card species-card h-100 shadow-sm position-relative">
+                            <span class="category-badge bg-danger text-white">INSECTO</span>
+                            <img src="img/especies_img/libelula.webp" alt="Libélula">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Libélula</h5>
+                                <p class="card-text text-muted">Vuela rápidamente sobre el agua cazando insectos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de Control -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#especiesCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#especiesCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+</div>
+
+<!-- JS de Bootstrap (Necesario para el Navbar y el Carrusel) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
