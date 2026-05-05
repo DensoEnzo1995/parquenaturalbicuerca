@@ -1,256 +1,1083 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Especies - Sierra Bicuerca</title>
     <!-- Google Fonts para el estilo espectacular -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <!-- CSS de Bootstrap 5.3.3 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <style>
-        :root {
-            --primary-green: #1a5d1a;
-            --accent-gold: #f4ce14;
-            --nature-dark: #3c4048;
-        }
+      :root {
+        --primary-green: #1a5d1a;
+        --accent-gold: #f4ce14;
+        --nature-dark: #3c4048;
+      }
 
-        body { 
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            font-family: 'Open Sans', sans-serif;
-            min-height: 100vh;
-        }
+      body {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        font-family: "Open Sans", sans-serif;
+        min-height: 100vh;
+      }
 
-        /* Estilos del Navbar */
-        .navbar {
-            background-color: var(--primary-green) !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        .navbar-brand, .nav-link {
-            color: white !important;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        .nav-link:hover {
-            color: var(--accent-gold) !important;
-        }
+      /* Estilos del Navbar */
+      .navbar {
+        background-color: var(--primary-green) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      .navbar-brand,
+      .nav-link {
+        color: white !important;
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
+      .nav-link:hover {
+        color: var(--accent-gold) !important;
+      }
 
-        /* Estilos del Carrusel Espectacular */
-        #especiesCarousel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 20px;
-        }
+      /* Estilos del Carrusel Espectacular */
+      #especiesCarousel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 20px;
+      }
 
-        .species-card { 
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            background: white;
-        }
+      .species-card {
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: none;
+        background: white;
+        cursor: pointer;
+      }
 
-        .species-card:hover { 
-            transform: translateY(-12px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
-        }
+      .species-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+      }
 
-        .species-card img { 
-            width: 100%;
-            height: 280px; 
-            object-fit: cover; 
-            transition: transform 0.5s;
-        }
+      .species-card img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
 
-        .species-card:hover img {
-            transform: scale(1.05);
-        }
+      .species-card:hover img {
+        transform: scale(1.05);
+      }
 
-        .carousel-item { padding: 20px; }
+      .carousel-item {
+        padding: 20px;
+      }
 
-        /* Iconos de control mejorados */
-        .carousel-control-prev-icon, .carousel-control-next-icon {
-            background-color: var(--primary-green);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            background-size: 50%;
-        }
+      /* Iconos de control mejorados */
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: var(--primary-green);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-size: 50%;
+      }
 
-        .category-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 2;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.75rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+      .category-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 2;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.75rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Estilos para el modal */
+      .modal-header {
+        background: linear-gradient(135deg, var(--primary-green), #2d7a2d);
+        color: white;
+      }
+      .modal-header .btn-close {
+        filter: brightness(0) invert(1);
+      }
+      .species-modal-img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+      .info-section {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+      }
+      .info-title {
+        color: var(--primary-green);
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+      .badge-primary {
+        background-color: #0d6efd;
+      }
+      .click-hint {
+        font-size: 0.8rem;
+        margin-top: 8px;
+      }
     </style>
-</head>
-<body>
-
-<!-- NAVBAR CLONADO -->
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
         <a class="navbar-brand fw-bold" href="index.html">Sierra Bicuerca</a>
-        <button class="navbar-toggler border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        <button
+          class="navbar-toggler border-white"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link active" href="especies.html">Especies</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Rutas</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-            </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="especies.html">Especies</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Rutas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+          </ul>
         </div>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<div class="container mt-5 pt-3">
-    <div class="text-center mb-5">
-        <h2 class="display-5 fw-bold text-success" style="font-family: 'Montserrat';">Biodiversidad</h2>
-        <p class="text-muted lead">Explora las maravillas que habitan en nuestro Parque Natural</p>
-        <hr class="mx-auto" style="width: 80px; border: 3px solid var(--primary-green); opacity: 1;">
-    </div>
+    <div class="container mt-5 pt-3">
+      <div class="text-center mb-5">
+        <h2
+          class="display-5 fw-bold text-success"
+          style="font-family: &quot;Montserrat&quot;"
+        >
+          Biodiversidad
+        </h2>
+        <p class="text-muted lead">
+          Explora las maravillas que habitan en nuestro Parque Natural
+        </p>
+        <p class="text-muted">
+          💡 <strong>Haz clic en cualquier animal</strong> para ver su
+          descripción completa
+        </p>
+        <hr
+          class="mx-auto"
+          style="
+            width: 80px;
+            border: 3px solid var(--primary-green);
+            opacity: 1;
+          "
+        />
+      </div>
 
-    <div id="especiesCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
-        
+      <div
+        id="especiesCarousel"
+        class="carousel slide shadow-lg"
+        data-bs-ride="carousel"
+      >
         <!-- Indicadores -->
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="0" class="active" style="background-color: var(--primary-green);"></button>
-            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="1" style="background-color: var(--primary-green);"></button>
-            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="2" style="background-color: var(--primary-green);"></button>
-            <button type="button" data-bs-target="#especiesCarousel" data-bs-slide-to="3" style="background-color: var(--primary-green);"></button>
+          <button
+            type="button"
+            data-bs-target="#especiesCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            style="background-color: var(--primary-green)"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#especiesCarousel"
+            data-bs-slide-to="1"
+            style="background-color: var(--primary-green)"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#especiesCarousel"
+            data-bs-slide-to="2"
+            style="background-color: var(--primary-green)"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#especiesCarousel"
+            data-bs-slide-to="3"
+            style="background-color: var(--primary-green)"
+          ></button>
         </div>
 
         <div class="carousel-inner">
-            <!-- GRUPO 1: Nutria y Buitre -->
-            <div class="carousel-item active">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
-                            <img src="img/especies_img/nutria.jpg" alt="Nutria">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Nutria</h5>
-                                <p class="card-text text-muted">Mamífero acuático que caza peces en el río.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-warning text-dark">AVE</span>
-                            <img src="img/especies_img/buitre_leonado.jpg" alt="Buitre">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Buitre leonado</h5>
-                                <p class="card-text text-muted">Ave rapaz carroñera de gran envergadura.</p>
-                            </div>
-                        </div>
-                    </div>
+          <!-- GRUPO 1: Nutria y Buitre -->
+          <div class="carousel-item active">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalNutria"
+                >
+                  <span class="category-badge bg-success text-white"
+                    >MAMÍFERO</span
+                  >
+                  <img src="img/especies_img/nutria.jpg" alt="Nutria" />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Nutria</h5>
+                    <p class="card-text text-muted">
+                      Mamífero acuático que caza peces en el río.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
                 </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalBuitre"
+                >
+                  <span class="category-badge bg-warning text-dark">AVE</span>
+                  <img src="img/especies_img/buitre_leonado.jpg" alt="Buitre" />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Buitre leonado</h5>
+                    <p class="card-text text-muted">
+                      Ave rapaz carroñera de gran envergadura.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <!-- GRUPO 2: Ciervo y Zorro -->
-            <div class="carousel-item">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
-                            <img src="img/especies_img/ciervo-rojo.jpg" alt="Ciervo">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Ciervo</h5>
-                                <p class="card-text text-muted">Herbívoro tranquilo que pasta al amanecer.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
-                            <img src="img/especies_img/zorro.jpg" alt="Zorro">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Zorro</h5>
-                                <p class="card-text text-muted">Astuto cazador nocturno de los bosques.</p>
-                            </div>
-                        </div>
-                    </div>
+          <!-- GRUPO 2: Ciervo y Zorro -->
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalCiervo"
+                >
+                  <span class="category-badge bg-success text-white"
+                    >MAMÍFERO</span
+                  >
+                  <img src="img/especies_img/ciervo-rojo.jpg" alt="Ciervo" />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Ciervo</h5>
+                    <p class="card-text text-muted">
+                      Herbívoro tranquilo que pasta al amanecer.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
                 </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalZorro"
+                >
+                  <span class="category-badge bg-success text-white"
+                    >MAMÍFERO</span
+                  >
+                  <img src="img/especies_img/zorro.jpg" alt="Zorro" />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Zorro</h5>
+                    <p class="card-text text-muted">
+                      Astuto cazador nocturno de los bosques.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <!-- GRUPO 3: Topillo y Martín Pescador -->
-            <div class="carousel-item">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-info text-dark">ROEDOR</span>
-                            <img src="img/especies_img/Topillo.jpg" alt="Topillo">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Topillo</h5>
-                                <p class="card-text text-muted">Pequeño roedor clave para el ecosistema.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-warning text-dark">AVE</span>
-                            <img src="img/especies_img/martín_pescador.jpg" alt="Martín Pescador">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Martín pescador</h5>
-                                <p class="card-text text-muted">Ave de colores vivos que pesca en picado.</p>
-                            </div>
-                        </div>
-                    </div>
+          <!-- GRUPO 3: Topillo y Martín Pescador -->
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalTopillo"
+                >
+                  <span class="category-badge bg-info text-dark">ROEDOR</span>
+                  <img src="img/especies_img/Topillo.jpg" alt="Topillo" />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Topillo</h5>
+                    <p class="card-text text-muted">
+                      Pequeño roedor clave para el ecosistema.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
                 </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalMartin"
+                >
+                  <span class="category-badge bg-warning text-dark">AVE</span>
+                  <img
+                    src="img/especies_img/martín_pescador.jpg"
+                    alt="Martín Pescador"
+                  />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Martín pescador</h5>
+                    <p class="card-text text-muted">
+                      Ave de colores vivos que pesca en picado.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <!-- GRUPO 4: Jabalí y Libélula -->
-            <div class="carousel-item">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-success text-white">MAMÍFERO</span>
-                            <img src="img/especies_img/jabalí.webp" alt="Jabalí">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Jabalí</h5>
-                                <p class="card-text text-muted">Fuerte y nocturno, busca raíces y bellotas.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card species-card h-100 shadow-sm position-relative">
-                            <span class="category-badge bg-danger text-white">INSECTO</span>
-                            <img src="img/especies_img/libelula.webp" alt="Libélula">
-                            <div class="card-body text-center">
-                                <h5 class="card-title fw-bold">Libélula</h5>
-                                <p class="card-text text-muted">Vuela rápidamente sobre el agua cazando insectos.</p>
-                            </div>
-                        </div>
-                    </div>
+          <!-- GRUPO 4: Jabalí y Libélula -->
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalJabali"
+                >
+                  <span class="category-badge bg-success text-white"
+                    >MAMÍFERO</span
+                  >
+                  <img src="img/especies_img/jabalí.webp" alt="Jabalí" />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Jabalí</h5>
+                    <p class="card-text text-muted">
+                      Fuerte y nocturno, busca raíces y bellotas.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
                 </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="card species-card h-100 shadow-sm position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalLibelula"
+                >
+                  <span class="category-badge bg-danger text-white"
+                    >INSECTO</span
+                  >
+                  <img src="img/especies_img/libelula.webp" alt="Libélula" />
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Libélula</h5>
+                    <p class="card-text text-muted">
+                      Vuela rápidamente sobre el agua cazando insectos.
+                    </p>
+                    <span class="badge bg-primary"
+                      >🔍 Haz clic para más info</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
 
         <!-- Botones de Control -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#especiesCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#especiesCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#especiesCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#especiesCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
         </button>
+      </div>
     </div>
-</div>
 
-<!-- JS de Bootstrap (Necesario para el Navbar y el Carrusel) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- ============================================ -->
+    <!-- MODALES CON DESCRIPCIÓN COMPLETA DE ESPECIES -->
+    <!-- ============================================ -->
+
+    <!-- MODAL NUTRIA -->
+    <div
+      class="modal fade"
+      id="modalNutria"
+      tabindex="-1"
+      aria-labelledby="nutriaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="nutriaLabel">
+              🦦 Nutria (Lutra lutra)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/nutria.jpg"
+              alt="Nutria"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Nutria'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                La nutria es un mamífero semiacuático de cuerpo alargado y ágil,
+                adaptado perfectamente a la vida en el agua. Puede medir hasta
+                1.3 metros (incluyendo la cola) y pesar entre 7 y 12 kg.
+              </p>
+
+              <h6 class="info-title">🌊 Hábitat</h6>
+              <p>
+                Habita en ríos de aguas limpias y caudal constante, con
+                abundante vegetación ribereña. En la Sierra Bicuerca se
+                encuentra principalmente en el tramo medio del río, donde
+                construye sus madrigueras entre las raíces de los árboles.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Es carnívora y se alimenta fundamentalmente de peces (truchas,
+                barbos), aunque también consume ranas, cangrejos, aves acuáticas
+                y pequeños mamíferos. Llega a consumir hasta 1 kg de alimento al
+                día.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                Es un animal de hábitos principalmente nocturnos y
+                crepusculares. Excelente nadadora, puede permanecer bajo el agua
+                hasta 4 minutos. Es territorial y solitaria, excepto en época de
+                cría. Marca su territorio con heces y secreciones odoríferas.
+              </p>
+
+              <h6 class="info-title">👶 Reproducción</h6>
+              <p>
+                La gestación dura unos 60-70 días, y suelen nacer de 2 a 4
+                crías. Estas permanecen con la madre hasta el año de edad. Está
+                considerada una especie "casi amenazada" debido a la
+                contaminación de los ríos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL BUITRE LEONADO -->
+    <div
+      class="modal fade"
+      id="modalBuitre"
+      tabindex="-1"
+      aria-labelledby="buitreLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="buitreLabel">
+              🦅 Buitre leonado (Gyps fulvus)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/buitre_leonado.jpg"
+              alt="Buitre leonado"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Buitre'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                Ave rapaz de gran tamaño, con una envergadura alar que puede
+                alcanzar los 2.5-2.8 metros. Pesa entre 6 y 11 kg. Su plumaje es
+                pardo claro con las partes inferiores más claras. Presenta un
+                característico collar de plumas blancas en la base del cuello.
+              </p>
+
+              <h6 class="info-title">🏔️ Hábitat</h6>
+              <p>
+                Prefiere zonas montañosas con acantilados y cortados rocosos
+                donde anidar. En la Sierra Bicuerca, las paredes del cañón del
+                río albergan una importante colonia de cría, la más numerosa de
+                la región.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Es estrictamente carroñero, alimentándose de cadáveres de
+                animales muertos. Su excelente vista le permite localizar la
+                carroña desde grandes distancias. Juega un papel ecológico
+                fundamental como "reciclador" del ecosistema.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                Es un ave social que se agrupa en colonias para dormir y
+                alimentarse. Realza vuelos en círculo aprovechando las
+                corrientes térmicas ascendentes. Puede recorrer más de 100 km
+                diarios en busca de alimento.
+              </p>
+
+              <h6 class="info-title">🪹 Reproducción</h6>
+              <p>
+                Ponen un único huevo por temporada. Ambos padres incuban durante
+                52-56 días. El pollo permanece en el nido unos 4 meses. Gracias
+                a programas de conservación, su población ha aumentado
+                significativamente en las últimas décadas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL CIERVO -->
+    <div
+      class="modal fade"
+      id="modalCiervo"
+      tabindex="-1"
+      aria-labelledby="ciervoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="ciervoLabel">
+              🦌 Ciervo (Cervus elaphus)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/ciervo-rojo.jpg"
+              alt="Ciervo"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Ciervo'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                El ciervo o venado es el cérvido más grande de Europa. Los
+                machos pueden alcanzar 1.2 metros de altura en la cruz y pesar
+                hasta 200 kg. Las hembras son más pequeñas y carecen de cuernas.
+                Los machos mudan su cuerna cada año entre febrero y abril.
+              </p>
+
+              <h6 class="info-title">🌳 Hábitat</h6>
+              <p>
+                Habita en bosques mixtos y claros con vegetación densa que le
+                proporcione refugio. En la Sierra Bicuerca frecuenta tanto los
+                bosques de ribera como las laderas arboladas de encinas y
+                robles.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Es herbívoro, alimentándose de pasto, brotes, hojas, bellotas,
+                frutos silvestres y cortezas de árboles. En otoño consume
+                grandes cantidades de bellotas para acumular reservas de cara al
+                invierno.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                El ciervo es más activo al amanecer y atardecer. Fuera de la
+                época de celo, machos y hembras viven en grupos separados.
+                Durante el otoño tiene lugar la "berrea", época de celo en la
+                que los machos emiten potentes bramidos para atraer a las
+                hembras y desafiar a otros machos.
+              </p>
+
+              <h6 class="info-title">👶 Reproducción</h6>
+              <p>
+                Las crías nacen en primavera (mayo-junio) tras una gestación de
+                8 meses. Normalmente tienen una sola cría, que permanece
+                escondida en la vegetación durante sus primeras semanas de vida.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL ZORRO -->
+    <div
+      class="modal fade"
+      id="modalZorro"
+      tabindex="-1"
+      aria-labelledby="zorroLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="zorroLabel">
+              🦊 Zorro (Vulpes vulpes)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/zorro.jpg"
+              alt="Zorro"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Zorro'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                El zorro común es un cánido de tamaño mediano, de constitución
+                esbelta y gran agilidad. Mide entre 60-90 cm de longitud (sin
+                contar la cola de 30-55 cm) y pesa entre 5 y 10 kg. Su
+                característico pelaje es rojizo con partes blancas en el vientre
+                y extremidades oscuras.
+              </p>
+
+              <h6 class="info-title">🏞️ Hábitat</h6>
+              <p>
+                Es una especie extremadamente adaptable que habita en bosques,
+                zonas de matorral, pastizales e incluso cerca de núcleos
+                urbanos. En la Sierra Bicuerca prefiere los ecotonos, áreas de
+                transición entre bosque y pradera.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Es omnívoro y oportunista. Su dieta incluye pequeños mamíferos
+                (ratones, conejos), aves, reptiles, insectos, frutos silvestres
+                y bayas. En otoño consume muchas moras y frutos del bosque.
+                Puede visitar campamentos en busca de restos de comida.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                Es un animal de hábitos principalmente nocturnos y
+                crepusculares. Vive en madrigueras que cava en el suelo o
+                aprovecha las de otros animales. Es territorial y marca su
+                territorio con orina y heces. Posee un oído y olfato muy
+                desarrollados.
+              </p>
+
+              <h6 class="info-title">👶 Reproducción</h6>
+              <p>
+                El celo tiene lugar en invierno. Las crías (de 3 a 7) nacen en
+                primavera tras 53 días de gestación. Ambos padres participan en
+                la cría. Los jóvenes abandonan el territorio familiar al año
+                siguiente.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL TOPILLO -->
+    <div
+      class="modal fade"
+      id="modalTopillo"
+      tabindex="-1"
+      aria-labelledby="topilloLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="topilloLabel">
+              🐭 Topillo (Microtus arvalis)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/Topillo.jpg"
+              alt="Topillo"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Topillo'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                Pequeño roedor de cuerpo rechoncho, cola corta y orejas poco
+                visibles. Mide 10-12 cm y pesa entre 20-40 gramos. Su pelaje es
+                pardo grisáceo por el dorso y más claro en el vientre.
+              </p>
+
+              <h6 class="info-title">🌾 Hábitat</h6>
+              <p>
+                Prefiere praderas, zonas de pasto, cultivos y márgenes de
+                caminos con vegetación herbácea densa. En la Sierra Bicuerca es
+                abundante en los prados húmedos junto a las riberas.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Es herbívoro, consumiendo tallos, hojas, semillas y raíces de
+                plantas herbáceas. Puede almacenar alimento en sus galerías
+                subterráneas para épocas de escasez.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                Es activo tanto de día como de noche, con períodos alternos de
+                actividad. Excava madrigueras subterráneas con múltiples
+                galerías y cámaras. Es una especie clave en la cadena trófica
+                por ser presa fundamental de rapaces, zorros y mustélidos.
+              </p>
+
+              <h6 class="info-title">👶 Reproducción</h6>
+              <p>
+                Es extremadamente prolífico: la hembra puede tener de 4 a 6
+                camadas al año, de 4 a 8 crías cada una. La gestación dura solo
+                21 días y las crías alcanzan la madurez sexual a los 2-3 meses.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL MARTÍN PESCADOR -->
+    <div
+      class="modal fade"
+      id="modalMartin"
+      tabindex="-1"
+      aria-labelledby="martinLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="martinLabel">
+              🐦 Martín pescador (Alcedo atthis)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/martín_pescador.jpg"
+              alt="Martín pescador"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Martin+Pescador'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                Pequeña ave de plumaje espectacular: dorso de color azul
+                turquesa iridiscente, partes inferiores anaranjadas, pico largo
+                y puntiagudo. Mide unos 16 cm de longitud y pesa entre 30-45
+                gramos.
+              </p>
+
+              <h6 class="info-title">💧 Hábitat</h6>
+              <p>
+                Habita en orillas de ríos, arroyos, lagos y embalses de aguas
+                limpias. Necesita taludes verticales para excavar su nido y
+                perchas desde las que pescar. En la Sierra Bicuerca es un
+                excelente bioindicador de la calidad del agua.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Es piscívoro, alimentándose de pequeños peces (hasta 6 cm) como
+                gambusias, pececillos y alevines. También consume insectos
+                acuáticos y renacuajos. Caza lanzándose en picado desde una
+                percha y capturando a sus presas con el pico.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                Es territorial y solitario excepto en época de cría. Pasa largos
+                periodos posado inmóvil vigilando el agua. Su vuelo es rápido y
+                rectilíneo, emitiendo un característico pío agudo y repetitivo.
+              </p>
+
+              <h6 class="info-title">🪹 Reproducción</h6>
+              <p>
+                Cavan un túnel de hasta 1 metro en taludes fluviales para
+                anidar. Ponen de 5 a 7 huevos blancos. Realizan dos puestas al
+                año (abril y julio). Está protegido por la directiva europea de
+                aves.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL JABALÍ -->
+    <div
+      class="modal fade"
+      id="modalJabali"
+      tabindex="-1"
+      aria-labelledby="jabaliLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="jabaliLabel">
+              🐗 Jabalí (Sus scrofa)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/jabalí.webp"
+              alt="Jabalí"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Jabali'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                Mamífero de cuerpo robusto y cabeza grande. Los machos pueden
+                pesar hasta 150 kg y medir 1.5 metros de largo. Presenta
+                colmillos inferiores muy desarrollados (colmillos) que usa para
+                defensa. Su pelaje es de cerdas duras de color pardo oscuro.
+              </p>
+
+              <h6 class="info-title">🌳 Hábitat</h6>
+              <p>
+                Muy adaptable, habita en bosques caducifolios, mixtos, zonas de
+                matorral denso y encinares. En la Sierra Bicuerca es abundante
+                en las áreas boscosas con abundante alimento como bellotas y
+                raíces.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Es omnívoro. Su dieta incluye raíces, tubérculos, frutos
+                silvestres (bellotas, hayucos), setas, insectos, lombrices,
+                pequeños vertebrados y carroña. Su característico hocico le
+                permite hozar el suelo en busca de alimento.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                De hábitos principalmente crepusculares y nocturnos. Viven en
+                grupos familiares (piaras) formados por hembras y sus crías. Los
+                machos adultos son solitarios excepto en época de celo. Se bañan
+                frecuentemente en barro para regular su temperatura y eliminar
+                parásitos.
+              </p>
+
+              <h6 class="info-title">👶 Reproducción</h6>
+              <p>
+                La gestación dura 4 meses y las camadas son de 4 a 8 rayones.
+                Estos presentan característico rayado pardo-amarillento que
+                pierden al mes de vida. Su población ha aumentado
+                considerablemente en las últimas décadas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL LIBÉLULA -->
+    <div
+      class="modal fade"
+      id="modalLibelula"
+      tabindex="-1"
+      aria-labelledby="libelulaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="libelulaLabel">
+              🦟 Libélula (Orden Odonata)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="img/especies_img/libelula.webp"
+              alt="Libélula"
+              class="species-modal-img mb-3"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/1a5d1a/white?text=Libelula'
+              "
+            />
+            <div class="info-section">
+              <h6 class="info-title">📋 Descripción general</h6>
+              <p>
+                Insecto de cuerpo alargado y esbelto, con dos pares de alas
+                membranosas transparentes que puede mover de forma
+                independiente. Su tamaño varía entre 3 y 8 cm, con envergadura
+                alar de hasta 10 cm. Destaca por sus grandes ojos compuestos que
+                ocupan casi toda la cabeza.
+              </p>
+
+              <h6 class="info-title">💧 Hábitat</h6>
+              <p>
+                Está ligada a hábitats acuáticos durante su fase larval
+                (náyades). Los adultos viven cerca de ríos, lagunas y humedales.
+                En la Sierra Bicuerca es frecuente en las pozas tranquilas del
+                río y en las charcas temporales.
+              </p>
+
+              <h6 class="info-title">🍽️ Alimentación</h6>
+              <p>
+                Los adultos son depredadores voraces, cazando mosquitos, moscas,
+                mariposas pequeñas y otros insectos voladores que capturan en
+                pleno vuelo. Las larvas acuáticas se alimentan de renacuajos,
+                pequeños peces e insectos acuáticos.
+              </p>
+
+              <h6 class="info-title">🐾 Costumbres</h6>
+              <p>
+                Son expertas voladoras, capaces de volar hacia atrás, mantenerse
+                estáticas en el aire y alcanzar velocidades de hasta 50 km/h.
+                Son territoriales y defienden sus zonas de caza. Pasan gran
+                parte del día posadas al sol para regular su temperatura.
+              </p>
+
+              <h6 class="info-title">🔄 Ciclo de vida</h6>
+              <p>
+                Tienen metamorfosis incompleta. Las larvas acuáticas (náyades)
+                viven de 1 a 3 años bajo el agua. Los adultos emergen y solo
+                viven unos pocos meses, tiempo que aprovechan para reproducirse.
+                Su presencia indica aguas limpias y bien oxigenadas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS de Bootstrap (Necesario para el Navbar y el Carrusel) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Pequeño script para inicializar correctamente el carrusel después de que la página cargue
+      document.addEventListener("DOMContentLoaded", function () {
+        // Asegurar que el carrusel tenga los atributos correctos
+        var carouselElement = document.querySelector("#especiesCarousel");
+        if (carouselElement) {
+          // Inicializar el carrusel de Bootstrap si no se inicializó automáticamente
+          new bootstrap.Carousel(carouselElement, {
+            interval: 5000, // Cambia de slide cada 5 segundos
+            ride: "carousel",
+            wrap: true,
+          });
+        }
+
+        // También podemos pre-cargar las imágenes del modal si queremos
+        console.log("Carrusel y modales inicializados correctamente");
+      });
+    </script>
+  </body>
 </html>
